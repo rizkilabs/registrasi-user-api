@@ -16,6 +16,8 @@ const validateRegister = (req, res, next) => {
     errors.push("Password wajib diisi");
   } else if (password.length < 8) {
     errors.push("Password minimal 8 karakter");
+  } else if (Buffer.byteLength(password, "utf8") > 72) {
+    errors.push("Password maksimal 72 karakter");
   }
 
   if (errors.length > 0) {
